@@ -22,6 +22,10 @@ class App extends Component {
       return this.props.recordedTime - this.props.lapTotal;
     }
   }
+
+  componentDidMount() {
+    this.tick();
+  }
   
   componentDidUpdate() {
     if (this.props.started) {
