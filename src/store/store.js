@@ -1,11 +1,6 @@
 import * as redux from 'redux';
 import { reducer } from '../reducers/reducers';
-
-const initialState = {
-  started: null,
-  recordedTime: 0,
-  laps: []
-}
+import { initialState } from './initial-state';
 
 export function configureStore(state = initialState) {
   return redux.createStore(reducer, state, redux.compose(
