@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import StopwatchControls from './components/StopwatchControls';
 import Timer from './components/Timer';
+import LapList from './components/LapList';
+import Lap from './components/Lap';
 
 class App extends Component {
 
@@ -42,23 +44,13 @@ class App extends Component {
       <div className="App">
         <h1 className="app__title">React Stopwatch</h1>
         <Timer label={'Total'} time={this.totalTime}/>
-        <Timer label={`Lap #${this.props.laps.length + 1}`} time={this.lapTime}/>
         <StopwatchControls />
-        {this.renderLapTimes()}
+        <Lap label={`Lap #${this.props.laps.length + 1}`} time={this.lapTime}/>
+        <LapList />
       </div>
     );
   }
 
-  renderLapTimes() {
-    return this.props.laps.map((lap, i) => {
-      return (
-        <div key={i}>
-          <label>Lap #{i + 1}</label>
-          <Timer time={lap}/>
-        </div>
-      );
-    })
-  }
 }
 
 export default connect(store => store)(App);
