@@ -9,6 +9,9 @@
     color: $background-color;
     transition: color 150ms, background-color 150ms;
   }
+  &:active {
+    background-color: lighten($color, 15%);
+  }
 }
 
 .button {
