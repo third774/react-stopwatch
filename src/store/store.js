@@ -1,12 +1,14 @@
 import * as redux from 'redux';
-import { isStarted, totalTime, laps } from '../reducers/reducers';
+import { reducer } from '../reducers/reducers';
 
-export function configureStore(initialState = {}) {
-  var reducer = redux.combineReducers({
-    isStarted, totalTime, laps
-  });
+const initialState = {
+  started: null,
+  recordedTime: 0,
+  laps: []
+}
 
-  return redux.createStore(reducer, initialState, redux.compose(
+export function configureStore(state = initialState) {
+  return redux.createStore(reducer, state, redux.compose(
     window.devToolsExtension ? window.devToolsExtension() : f => f
   ));
 }
