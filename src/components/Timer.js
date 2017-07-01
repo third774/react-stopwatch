@@ -15,7 +15,7 @@ export default connect(state => state)(Timer);
 function formatTime(time) {
   let minutes = Math.floor(time / 60000);
   let seconds = Math.floor((time % 60000) / 1000);
-  let milliSeconds = Math.round((time % 1000) * 0.1);
+  let milliSeconds = Math.floor((time % 1000) * 0.1);
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
