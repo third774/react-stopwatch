@@ -8,6 +8,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>React Stopwatch</h1>
+        <h1 className="app-title">React Stopwatch</h1>
         <StopwatchControls />
       </div>
     );
