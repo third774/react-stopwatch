@@ -1,4 +1,9 @@
 @import 'variables';
+
+// global styles
 @import 'global';
+@import 'buttons';
+
+// Component Styles
 @import 'App';
 @import 'Timer';
