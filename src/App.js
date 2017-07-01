@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './styles/App.scss';
-import { StopwatchControls } from './components/StopwatchControls';
+import StopwatchControls from './components/StopwatchControls';
 import Timer from './components/Timer';
 
 class App extends Component {
