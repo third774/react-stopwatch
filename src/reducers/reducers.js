@@ -22,7 +22,6 @@ export function reducer(state, action) {
       return {
         ...state,
         lapTotal: newLapTotal,
-        recordedLapTime: 0,
         laps: [...state.laps, lapTime],
       }
     default:
