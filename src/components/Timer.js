@@ -6,7 +6,10 @@ import { formatTime } from '../helpers/helpers';
 export class Timer extends Component {
   render() {
     return (
-      <h2 className="timer">{formatTime(this.props.time)}</h2>
+      <div className="timer">
+        <label className="timer__label">{this.props.label}</label>
+        <h2 className="timer__clock">{formatTime(this.props.time)}</h2>
+      </div>
     );
   }
 }
