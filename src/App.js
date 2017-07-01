@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import logo from './logo.svg';
-import './styles/App.scss';
 import StopwatchControls from './components/StopwatchControls';
 import Timer from './components/Timer';
 

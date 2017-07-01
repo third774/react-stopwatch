@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import '../styles/Timer.scss';
 import { formatTime } from '../helpers/helpers';
 
 export class Timer extends Component {

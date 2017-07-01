@@ -1,10 +1,4 @@
 @import 'variables';
-
-body {
-  margin: 0;
-  font-family: 'Share Tech Mono', monospace;
-  height: 100vh;
-  background-color: $almostblack;
-  color: $almostwhite;
-  letter-spacing: 0.2rem;
-}
+@import 'global';
+@import 'App';
+@import 'Timer';
