@@ -8,16 +8,16 @@ export class StopwatchControls extends Component {
 
     if (started) {
       return (
-        <div>
-          <button className="button" onClick={() => dispatch(stopTimer(Date.now()))}>Stop</button>
-          <button className="button" onClick={() => dispatch(addLap(Date.now()))}>Lap</button>
+        <div className="stopwatch-controls">
+          <button className="button button--red" onClick={() => dispatch(stopTimer(Date.now()))}>Stop</button>
+          <button className="button button--blue" onClick={() => dispatch(addLap(Date.now()))}>Lap</button>
         </div>
       )
     } else {
       return (
-        <div>
-          <button className="button" onClick={() => dispatch(startTimer(Date.now()))}>Start</button>
-          <button className="button" onClick={() => dispatch(resetTimer())}>Reset</button>
+        <div className="stopwatch-controls">
+          <button className="button button--green" onClick={() => dispatch(startTimer(Date.now()))}>Start</button>
+          <button className="button button--red" onClick={() => dispatch(resetTimer())}>Reset</button>
         </div>
       )
     }
