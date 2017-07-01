@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import StopwatchControls from './components/StopwatchControls';
-import Timer from './components/Timer';
-import LapList from './components/LapList';
-import Lap from './components/Lap';
+import StopwatchControls from './StopwatchControls';
+import Timer from './Timer';
+import LapList from './LapList';
+import Lap from './Lap';
 
 class App extends Component {
 
