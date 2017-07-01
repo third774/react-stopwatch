@@ -1,3 +1,5 @@
+import { initialState } from '../store/initial-state';
+
 export function reducer(state, action) {
   switch (action.type) {
     case 'START_TIMER':
@@ -12,10 +14,16 @@ export function reducer(state, action) {
         started: null
       };
     case 'RESET_TIMER':
+      return initialState;
+    case 'ADD_LAP':
+      const lapTotal = state.laps.reduce((prev, cur) => prev + cur, 0);
+      const lapTime = action.time - state.started + state.recordedTime - lapTotal;
+      const newLapTotal = lapTotal + lapTime;
       return {
-        started: null,
-        recordedTime: 0,
-        laps: []
+        ...state,
+        lapTotal: newLapTotal,
+        recordedLapTime: 0,
+        laps: [...state.laps, lapTime],
       }
     default:
       return state;
