@@ -3,20 +3,18 @@ export function reducer(state, action) {
     case 'START_TIMER':
       return {
         ...state,
-        started: new Date().getTime()
+        started: action.time
       };
     case 'STOP_TIMER':
-      const stopTime = new Date().getTime();
-      const recordedTime = state.recordedTime || 0;
       return {
         ...state,
-        recordedTime: recordedTime + stopTime - state.started,
+        recordedTime: state.recordedTime + action.time - state.started,
         started: null
       };
     case 'RESET_TIMER':
       return {
         started: null,
-        recordedTime: null,
+        recordedTime: 0,
         laps: []
       }
     default:

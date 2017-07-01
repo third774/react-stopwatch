@@ -1,18 +1,13 @@
-export function startTimer() {
+export function startTimer(time) {
   return {
-    type: 'START_TIMER'
+    type: 'START_TIMER',
+    time
   };
 }
 
-export function stopTimer() {
+export function stopTimer(time) {
   return {
-    type: 'STOP_TIMER'
-  };
-}
-
-export function updateTime(time) {
-  return {
-    type: 'UPDATE_TIME',
+    type: 'STOP_TIMER',
     time
   };
 }
@@ -27,11 +22,5 @@ export function addLap(time) {
   return {
     type: 'ADD_LAP',
     time
-  };
-}
-
-export function resetLaps() {
-  return {
-    type: 'RESET_LAPS'
   };
 }
