@@ -9,14 +9,14 @@ export class StopwatchControls extends Component {
     if (started) {
       return (
         <div>
-          <button className="button" onClick={() => dispatch(stopTimer())}>Stop</button>
-          <button className="button" onClick={() => dispatch(addLap(1012300))}>Lap</button>
+          <button className="button" onClick={() => dispatch(stopTimer(Date.now()))}>Stop</button>
+          <button className="button" onClick={() => dispatch(addLap(Date.now()))}>Lap</button>
         </div>
       )
     } else {
       return (
         <div>
-          <button className="button" onClick={() => dispatch(startTimer())}>Start</button>
+          <button className="button" onClick={() => dispatch(startTimer(Date.now()))}>Start</button>
           <button className="button" onClick={() => dispatch(resetTimer())}>Reset</button>
         </div>
       )
