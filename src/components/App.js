@@ -22,10 +22,11 @@ class App extends Component {
   tick() {
     if (this.props.started) {
       const now = Date.now();
+      const totalTime = now - this.props.started + this.props.recordedTime;
       this.setState({
         now,
-        totalTime: now - this.props.started + this.props.recordedTime,
-        currentLapTime: now - this.props.started + this.props.recordedTime - this.props.lapTotal
+        totalTime,
+        currentLapTime: totalTime - this.props.lapTotal
       });
     } else {
       if (this.props.recordedTime !== this.state.totalTime) {
