@@ -3,50 +3,47 @@ import { connect } from 'react-redux';
 import StopwatchControls from './StopwatchControls';
 import Timer from './Timer';
 import LapList from './LapList';
-import Lap from './Lap';
 
 class App extends Component {
 
-  get totalTime() {
-    if (this.props.started) {
-      return Date.now() - this.props.started + this.props.recordedTime;
-    } else {
-      return this.props.recordedTime;
-    }
-  }
-
-  get lapTime() {
-    if (this.props.started) {
-      return Date.now() - this.props.started + this.props.recordedTime - this.props.lapTotal;
-    } else {
-      return this.props.recordedTime - this.props.lapTotal;
-    }
-  }
+  state = {
+    totalTime: 0,
+    currentLapTime: 0
+  };
 
   componentDidMount() {
     this.tick();
   }
-  
+
   componentDidUpdate() {
-    if (this.props.started) {
-      this.animationFrame = requestAnimationFrame(this.tick.bind(this));
-    } else {
-      cancelAnimationFrame(this.animationFrame);
-    }
+    requestAnimationFrame(this.tick.bind(this));
   }
 
   tick() {
-    this.forceUpdate();
+    if (this.props.started) {
+      const now = Date.now();
+      this.setState({
+        now,
+        totalTime: now - this.props.started + this.props.recordedTime,
+        currentLapTime: now - this.props.started + this.props.recordedTime - this.props.lapTotal
+      });
+    } else {
+      if (this.props.recordedTime !== this.state.totalTime) {
+        this.setState({
+          totalTime: this.props.recordedTime,
+          currentLapTime: this.props.recordedTime - this.props.lapTotal
+        });
+      }
+    }
   }
 
   render() {
     return (
       <div className="App">
         <h1 className="app__title">React Stopwatch</h1>
-        <Timer label={'Total'} time={this.totalTime}/>
+        <Timer label={'Total'} time={this.state.totalTime} />
         <StopwatchControls />
-        <Lap label={`Lap #${this.props.laps.length + 1}`} time={this.lapTime}/>
-        <LapList />
+        <LapList currentLapTime={this.state.currentLapTime} />
       </div>
     );
   }

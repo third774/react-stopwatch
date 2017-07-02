@@ -22,7 +22,7 @@ export function reducer(state, action) {
       return {
         ...state,
         lapTotal: newLapTotal,
-        laps: [...state.laps, lapTime],
+        laps: [lapTime, ...state.laps],
       }
     default:
       return state;
