@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { formatTime } from '../helpers/helpers';
 
 export class Timer extends Component {
@@ -12,5 +13,10 @@ export class Timer extends Component {
     );
   }
 }
+
+Timer.propTypes = {
+  label: PropTypes.string.isRequired,
+  time: PropTypes.number.isRequired,
+};
 
 export default connect(state => state)(Timer);

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { formatTime } from '../helpers/helpers';
 
 export class Lap extends Component {
@@ -12,5 +13,10 @@ export class Lap extends Component {
     );
   }
 }
+
+Lap.propTypes = {
+  label: PropTypes.string.isRequired,
+  time: PropTypes.number.isRequired,
+};
 
 export default connect(state => state)(Lap);
