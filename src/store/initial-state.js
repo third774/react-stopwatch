@@ -18,7 +18,7 @@ export const initialState = {
   lapTotal: 0,
 
   /**
-   * Array of lap times in milliseconds
+   * Array of lap times in milliseconds. New laps are prepended, so the list is in reverse
    */
   laps: []
 };
