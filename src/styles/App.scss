@@ -9,3 +9,9 @@
 .app__title {
   text-align: center;
 }
+
+@media only screen and (min-device-width: 768px)  {
+  .app__title {
+    margin-top: 4rem;
+  }
+}
