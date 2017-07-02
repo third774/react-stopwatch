@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import StopwatchControls from './StopwatchControls';
 import Timer from './Timer';
 import LapList from './LapList';
+import { convertToCentiSeconds } from '../helpers/helpers';
 
 class App extends Component {
 
@@ -21,7 +22,7 @@ class App extends Component {
 
   tick() {
     if (this.props.started) {
-      const now = Date.now();
+      const now = convertToCentiSeconds(Date.now());
       const totalTime = now - this.props.started + this.props.recordedTime;
       this.setState({
         now,
