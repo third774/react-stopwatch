@@ -2,7 +2,6 @@
 
 Check out [the demo](https://third774.github.io/react-stopwatch/) on GitHub Pages
 
----
 ## Requirements
 
 > Using HTML, CSS and JavaScript, create a functional and stylized Stopwatch application. The requirements are as follows:
@@ -16,7 +15,6 @@ Check out [the demo](https://third774.github.io/react-stopwatch/) on GitHub Page
 > 
 > In reviewing, it’s important to us that your code is consistent and well- formatted and that you’ve kept a good commit history that demonstrates your progress. In addition, please provide a README that outlines the structure of your application, the reasoning behind your technical choices, and any trade-offs you made or changes you would have implemented if you had additional time.
 
----
 ## Structure
 
 ### Files
@@ -90,7 +88,6 @@ export const initialState = {
 };
 ```
 
----
 ## Reasoning
 
 The requirement to have the application continue tracking time regardless of whether the window is open or not drove how the store was designed. I did not want to dispatch an action to update the store incrementing the timer repeatedly, so the active timers had to be based on when the timer was `started` in epoch time, and derived as they were rendered based on the current time for each frame.
@@ -105,7 +102,6 @@ After getting the application to function correctly, having it persist across pa
 
 Finally, I ran into a rounding error when using centisecond formatting from millisecond values. Sometimes when adding up all the lap times, the value would not be precisely equal to the total time. I corrected this issue by storing only centisecond values and updating my formatting function to assume centisecond values.
 
----
 ## Trade-offs & Improvements
 
 The decision to not store the current time in the store meant that I needed to hold that state within the `App` component and pass it into the `Timer` and `LapList` components. I potentially could have dispatched actions to update the store with the current time on each frame, but that could have had an impact on performance at least with my dev tools. I think I've heard that Redux can be configured to only retain a certain amount of store history, and if I had to update the store with the current time every frame I would have needed to go tinker with that.
