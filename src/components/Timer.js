@@ -19,4 +19,4 @@ Timer.propTypes = {
   time: PropTypes.number.isRequired,
 };
 
-export default connect(state => state)(Timer);
+export default Timer;
