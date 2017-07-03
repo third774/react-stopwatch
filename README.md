@@ -55,8 +55,8 @@ The `App` component is the top level component which manages the `requestAnimati
 > * App
 >   * Timer
 >   * StopwatchControls
+>   * Lap (current lap)
 >   * LapList
->     * Lap (current lap)
 >     * Lap (for each recorded lap)
 
 ### State
