@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import StopwatchControls from './StopwatchControls';
 import Timer from './Timer';
 import LapList from './LapList';
+import Lap from './Lap';
 import { convertToCentiSeconds } from '../helpers/helpers';
 
 class App extends Component {
@@ -45,7 +46,8 @@ class App extends Component {
         <h1 className="app__title">React Stopwatch</h1>
         <Timer label={'Total'} time={this.state.totalTime} />
         <StopwatchControls />
-        <LapList currentLapTime={this.state.currentLapTime} />
+        <Lap label={`Lap #${this.props.laps.length + 1}`} time={this.state.currentLapTime} />
+        <LapList />
       </div>
     );
   }

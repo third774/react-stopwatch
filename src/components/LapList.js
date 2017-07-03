@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import Lap from './Lap';
 
 export class LapList extends Component {
@@ -8,7 +7,6 @@ export class LapList extends Component {
     const { laps } = this.props;
     return (
       <div className="lap-list">
-        <Lap label={`Lap #${this.props.laps.length + 1}`} time={this.props.currentLapTime} />
         {laps.map((lap, i) => {
           const lapNumber = laps.length - i;
           return (
@@ -20,8 +18,4 @@ export class LapList extends Component {
   }
 }
 
-LapList.propTypes = {
-  currentLapTime: PropTypes.number.isRequired
-};
-
-export default connect(state => state)(LapList);
+export default connect(state => {return {laps: state.laps};})(LapList);
