@@ -7,7 +7,6 @@ import { convertToCentiSeconds } from '../helpers/helpers';
 export class StopwatchControls extends Component {
   render() {
     const { started, dispatch } = this.props;
-
     if (started) {
       return (
         <div className="stopwatch-controls">
@@ -34,4 +33,9 @@ export class StopwatchControls extends Component {
   }
 }
 
-export default connect(state => state)(StopwatchControls);
+export default connect(state => {
+  return {
+    dispatch: state.dispatch,
+    started: state.started
+  };
+})(StopwatchControls);
