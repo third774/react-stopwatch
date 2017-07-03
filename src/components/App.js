@@ -4,6 +4,7 @@ import StopwatchControls from './StopwatchControls';
 import Timer from './Timer';
 import LapList from './LapList';
 import Lap from './Lap';
+import FontAwesome from 'react-fontawesome';
 import { convertToCentiSeconds } from '../helpers/helpers';
 
 class App extends Component {
@@ -48,6 +49,7 @@ class App extends Component {
         <StopwatchControls />
         <Lap label={`Lap #${this.props.laps.length + 1}`} time={this.state.currentLapTime} />
         <LapList />
+        <a className="app__github" target="_blank" href="https://github.com/third774/react-stopwatch"><FontAwesome name="github" size='2x'/></a>
       </div>
     );
   }
