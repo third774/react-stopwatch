@@ -90,17 +90,19 @@ export const initialState = {
 
 ## Reasoning
 
-The requirement to have the application continue tracking time regardless of whether the window is open or not drove how the store was designed. I did not want to dispatch an action to update the store incrementing the timer repeatedly, so the active timers had to be based on when the timer was `started` in epoch time, and derived as they were rendered based on the current time for each frame.
+* The requirement to have the application continue tracking time regardless of whether the window is open or not drove how the store was designed. I did not want to dispatch an action to update the store incrementing the timer repeatedly, so the active timers had to be based on when the timer was `started` in epoch time, and derived as they were rendered based on the current time for each frame.
 
-Every time the timer stops, the `recordedTime` is updated to hold the total number of centiseconds that the timer ran in previous intervals between stoppages, and is later added when calculating the timer values.
+* Every time the timer stops, the `recordedTime` is updated to hold the total number of centiseconds that the timer ran in previous intervals between stoppages, and is later added when calculating the timer values.
 
-`lapTotal` is updated in the store every time a lap is logged so that this value does not need to be calculated by summing the `laps` array during every `requestAnimationFrame` call.
+* `lapTotal` is updated in the store every time a lap is logged so that this value does not need to be calculated by summing the `laps` array during every `requestAnimationFrame` call.
 
-`requestAnimationFrame` was used for performance allowing the browser to control the render rate.
+* `requestAnimationFrame` was used for performance allowing the browser to control the render rate.
 
-After getting the application to function correctly, having it persist across page loads while still running was relatively easy. I used a redux middleware called `redux-localstorage` that keeps the application store in sync with `localstorage`. Once the middleware was wired up, it just worked.
+* After getting the application to function correctly, having it persist across page loads while still running was relatively easy. I used a redux middleware called `redux-localstorage` that keeps the application store in sync with `localstorage`. Once the middleware was wired up, it just worked.
 
-Finally, I ran into a rounding error when using centisecond formatting from millisecond values. Sometimes when adding up all the lap times, the value would not be precisely equal to the total time. I corrected this issue by storing only centisecond values and updating my formatting function to assume centisecond values.
+* I ran into a rounding error when using centisecond formatting from millisecond values. Sometimes when adding up all the lap times, the value would not be precisely equal to the total time. I corrected this issue by storing only centisecond values and updating my formatting function to assume centisecond values.
+
+* Special attention was paid to which `props` were updating in different components and causing them to re-render. At one point, I thought it was a good idea to move the `Lap` component for the current lap into the `LapList` component, but this caused the recorded lap list to be re-rendered every frame, so I pulled it out. Now, the `LapList` only re-renders when a new lap is recorded, and the `StopwatchContorls` only re-renders when the time is started or stopped.
 
 ## Trade-offs & Improvements
 
